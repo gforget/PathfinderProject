@@ -1,0 +1,5 @@
+ W = wall
+ P = Player Position
+ F = Floor
+ G = FloorW2
+ H = FloorW3
