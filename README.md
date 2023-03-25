@@ -1,7 +1,9 @@
 # PathfinderProject 
 Simple unity project to test grid base Pathfinding Algorithm using a simple level generator file.</br>
-Unity version 20202.3.26f1
 
+## Unity version
+2020.3.26f1
+ 
 ## Implemented Algorithm
 1. Breadth First
 2. Dijkstra
