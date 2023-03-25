@@ -137,7 +137,7 @@ public class LevelManager : MonoBehaviour
         //Floor and exterior wall
         for (int i = 0; i < (floorSizeX + 1); i++)
         {
-            for (int j = 0; j < (floorSizeZ + 1); j++)
+            for (int j = 0; j < (floorSizeZ + 2); j++)
             {
                 Vector3 floorPosition = new Vector3(i, 0, j);
 
@@ -154,7 +154,7 @@ public class LevelManager : MonoBehaviour
                     Instantiate(floorTilesPrefab, floorPosition, Quaternion.identity);
                 }
 
-                if (i == 0 || i == (floorSizeX) || j == 0 || j == (floorSizeZ))
+                if (i == 0 || i == (floorSizeX) || j == 0 || j == (floorSizeZ+1))
                 {
                     Instantiate(wallTilesPrefab, new Vector3(i, 0, j), Quaternion.identity);
                     AddWallCoordinates(new Vector3(i, 0, j));
