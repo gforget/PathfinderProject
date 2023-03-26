@@ -69,3 +69,6 @@ Choose if the agents can only use lateral direction (4 direction), or all direct
 
 <b>W2 Weight and W3 Weight</b></BR>
 The weight of W2 (yellow) and W3(red) floor tiles</BR></BR>
+
+##Source</BR>
+<a href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">https://www.redblobgames.com/pathfinding/a-star/introduction.html</a>
