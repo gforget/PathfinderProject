@@ -1,5 +1,5 @@
 # PathfinderProject 
-Simple unity project to test grid base Pathfinding Algorithm using a simple level generator file.</br>
+Simple unity project to test grid base Pathfinding Algorithm using a simple level generator file. It also include avoidance of other agent while they move.</br>
 
 ## Unity version
 2020.3.26f1
