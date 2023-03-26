@@ -15,7 +15,7 @@ public class PathfinderManager : MonoBehaviour
     [SerializeField] int pathWeightMax = 24;
     [SerializeField] int pathWeightDecay = 0;
     [SerializeField] GlobalEnum.PathfinderAlgorithm pickedAlgorithm = 0;
-    [SerializeField] GlobalEnum.DefaultMovementType defaultMovementType = 0;
+    public GlobalEnum.DefaultMovementType defaultMovementType = 0;
     [SerializeField] int W2Weight = 6;
     [SerializeField] int W3Weight = 12;
     [SerializeField] GameObject pathIndicatorPrefab;

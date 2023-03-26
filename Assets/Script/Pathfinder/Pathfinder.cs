@@ -65,10 +65,6 @@ public class Pathfinder : MonoBehaviour
             case GlobalEnum.DefaultMovementType._8Directions:
                 defaultMovementAllowed = MovementAllowed_8Direction;
                 break;
-
-            case GlobalEnum.DefaultMovementType._Custom:
-
-                break;
         }
     }
 
@@ -136,9 +132,8 @@ public class Pathfinder : MonoBehaviour
             {
                 iteration++;
                 Vector3 next = current + movementAllowed[i];
-                if (!LevelManager.instance.wallCoordinates.Contains(next)
-                    && ValidateAgentAsObstacle(next)
-                    && !came_from.ContainsKey(next))
+                if (DetectObstacle(current, next, i) &&
+                   !came_from.ContainsKey(next))
                 {
                     frontier.Enqueue(next);
                     came_from[next] = current;
@@ -160,7 +155,6 @@ public class Pathfinder : MonoBehaviour
         Stack<PathElement> pathStack = new Stack<PathElement>();
         if (PathFound)
         {
-            //PathfinderIndicator pathIndicator = new PathfinderIndicator();
             PathfinderIndicator pathIndicator = null;
             Vector3 current = destination;
 
@@ -219,9 +213,8 @@ public class Pathfinder : MonoBehaviour
                 int new_cost = cost_so_far[current] + LevelManager.instance.GetFloorCost(current) + AddPathWeight(current, agentController); ;
 
                 if (
-                    !LevelManager.instance.wallCoordinates.Contains(next) &&
-                    (!cost_so_far.ContainsKey(next) || new_cost < cost_so_far[next]) &&
-                    ValidateAgentAsObstacle(next)
+                    DetectObstacle(current, next, i) &&
+                    (!cost_so_far.ContainsKey(next) || new_cost < cost_so_far[next])
                     )
                 {
                     cost_so_far[next] = new_cost;
@@ -245,7 +238,7 @@ public class Pathfinder : MonoBehaviour
         Stack<PathElement> pathStack = new Stack<PathElement>();
         if (PathFound)
         {
-            PathfinderIndicator pathIndicator = new PathfinderIndicator();
+            PathfinderIndicator pathIndicator = null;
             Vector3 current = destination;
 
             while (current != initialPosition)
@@ -302,9 +295,9 @@ public class Pathfinder : MonoBehaviour
                 int new_cost = cost_so_far[current] + LevelManager.instance.GetFloorCost(current) + AddPathWeight(current, agentController);
 
                 if (
-                    !LevelManager.instance.wallCoordinates.Contains(next) &&
-                    (!cost_so_far.ContainsKey(next) || new_cost < cost_so_far[next]) &&
-                    ValidateAgentAsObstacle(next)
+                    DetectObstacle(current, next, i)
+                    &&
+                    (!cost_so_far.ContainsKey(next) || new_cost < cost_so_far[next]) 
                     )
                 {
                     cost_so_far[next] = new_cost;
@@ -354,7 +347,29 @@ public class Pathfinder : MonoBehaviour
 
     private int Heuristic(Vector3 goal, Vector3 next) 
     {
-        return (int)(Mathf.Abs(goal.x-next.x) + Mathf.Abs(goal.z-next.z));
+
+            return (int)(Mathf.Abs(goal.x - next.x) + Mathf.Abs(goal.z - next.z));
+    }
+
+    private bool DetectObstacle(Vector3 current, Vector3 next, int directionIndex) 
+    {
+        bool canPass = false;
+        canPass = !LevelManager.instance.wallCoordinates.Contains(next) && ValidateAgentAsObstacle(next);
+
+        //if movement in diagonal, check if there is obstacle on the side of the destination
+        if (PathfinderManager.instance.defaultMovementType == GlobalEnum.DefaultMovementType._8Directions && directionIndex > 3 && canPass)
+        {
+            Vector3 evalPos1 = current + new Vector3(defaultMovementAllowed[directionIndex].x, 0, 0);
+            Vector3 evalPos2 = current + new Vector3(0, 0, defaultMovementAllowed[directionIndex].z);
+
+            canPass = !LevelManager.instance.wallCoordinates.Contains(evalPos1) && ValidateAgentAsObstacle(evalPos1);
+            if (canPass)
+            {
+                canPass = !LevelManager.instance.wallCoordinates.Contains(evalPos2) && ValidateAgentAsObstacle(evalPos2);
+            }
+        }
+
+        return canPass;
     }
 
     private PathfinderIndicator CreatePathIndicator(Vector3 destination, AgentController agentController)

@@ -16,8 +16,7 @@ public static class GlobalEnum
     public enum DefaultMovementType
     {
         _4Directions = 0,
-        _8Directions = 1,
-        _Custom = 2
+        _8Directions = 1
     }
 
     public enum PathfinderAlgorithm

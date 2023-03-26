@@ -65,10 +65,6 @@ public class PathfinderJob : MonoBehaviour
             case GlobalEnum.DefaultMovementType._8Directions:
                 defaultMovementAllowed = MovementAllowed_8Direction;
                 break;
-
-            case GlobalEnum.DefaultMovementType._Custom:
-
-                break;
         }
     }
 

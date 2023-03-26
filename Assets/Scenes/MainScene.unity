@@ -852,7 +852,7 @@ MonoBehaviour:
   pathWeightMax: 24
   pathWeightDecay: 0
   pickedAlgorithm: 2
-  defaultMovementType: 0
+  defaultMovementType: 1
   W2Weight: 6
   W3Weight: 12
   pathIndicatorPrefab: {fileID: 5798031132970267243, guid: e74ae521246743a46bdc844bbb6c6480, type: 3}
