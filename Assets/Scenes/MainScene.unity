@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8277d455b8c04547aac7ae59fdc9e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbNPC: 0
+  nbNPC: 1
   levelName: Level
   playerPrefab: {fileID: 2031922906271332794, guid: a1dce056abd272048a155f7d657b0191, type: 3}
   NPCPrefab: {fileID: 2031922906271332794, guid: 17b3f3cf6a8cea0488fcafbcd8e0e02d, type: 3}
