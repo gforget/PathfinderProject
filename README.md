@@ -15,7 +15,7 @@ Simple unity project to test grid base Pathfinding Algorithm using a simple leve
 ![Screenshot of how the project look when activated](/Screenshot/MainLevel.png)
 
 ## Level Editor
-Simply create a .txt file where each letter determine the type of tiles should place in the level. For example, the following folder create the level seen above: </BR></BR>
+Simply create a .txt file where each letter determine the type of tiles that should place in the level. For example, the following folder create the level seen above: </BR></BR>
 ![Screenshot of a level seen in visual studio](/Screenshot/levelExample.png)
 
 Once the file is created, put it in the StreamingAssets folder. In the MainScene scene, use the level name in the LevelManager component 'Level Name' Field. </BR></BR>
@@ -47,7 +47,7 @@ The name of the level file you want to use
 Activate the Jobified version of the algorithm. Still a work in progress, only work with A*</BR></BR>
 
 <b>Show Path</b></BR>
-Activate so the tiles become green to show where the path the agent is following</BR></BR>
+Activate so the tiles become green to show the path the agent is following</BR></BR>
 
 <b>Agents Are Obstacle</b></BR>
 Activate so that other agent will be considered obstacle to circumvent too</BR></BR>
