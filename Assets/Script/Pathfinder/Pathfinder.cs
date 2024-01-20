@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour
 {
+    //Test Dev Branch Update
     //All code based on this article : https://www.redblobgames.com/pathfinding/a-star/introduction.html
 
     public static Pathfinder Instance;
